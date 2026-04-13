@@ -1,0 +1,30 @@
+from datetime import date
+
+print ('Bienvenido, en este programa vas a poner tu fecha de nacimiento, y te va a decir cuantos años, meses (Los meses los vas a poner en numeros) y dias tienes.')
+
+dia_n = int(input("Ingresa tu día de nacimiento: "))
+mes_n = int(input("Ingresa tu mes de nacimiento: "))
+año_n = int(input("Ingresa tu año de nacimiento: "))
+
+
+hoy = date.today()
+
+
+fecha_nacimiento = date(año_n, mes_n, dia_n)
+
+
+años = hoy.year - fecha_nacimiento.year
+meses = hoy.month - fecha_nacimiento.month
+dias = hoy.day - fecha_nacimiento.day
+
+
+if dias < 0:
+    meses -= 1
+
+    dias += (date(hoy.year, hoy.month, 1) - date(hoy.year, hoy.month - 1, 1)).days
+
+if meses < 0:
+    años -= 1
+    meses += 12
+
+print("Tienes:", años, "años,", meses, "meses y", dias, "días")
